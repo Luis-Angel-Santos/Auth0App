@@ -9,12 +9,21 @@
                 <li class="nav-item active" routerLinkActive="active">
                     <a class="nav-link" routerLink="/home">Home</a>
                 </li>
-                <li class="nav-item" routerLinkActive="active">
+                <li class="nav-item" routerLinkActive="active" *ngIf="auth.isAuthenticated$ | async;">
                     <a class="nav-link" routerLink="/protegido">Protegido</a>
                 </li>
             </ul>
             <span class="navbar-text">
-                <button class="btn btn-outline-success" (click)="auth.loginWithRedirect()">Log in</button>
+                
+                <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+                    <button class="btn btn-outline-danger" (click)="auth.logout({ returnTo: document.location.origin })">
+                      Log out
+                    </button>
+                  </ng-container>
+              
+                  <ng-template #loggedOut>
+                    <button class="btn btn-outline-success" (click)="auth.loginWithRedirect()">Log in</button>
+                </ng-template>
         </span>
         </div>
     </div>
