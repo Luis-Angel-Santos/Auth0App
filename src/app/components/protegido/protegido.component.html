@@ -1,7 +1,17 @@
 <h2>Perfil de Usuario</h2>
 <div class="container" *ngIf="auth.user$ | async as user">
-    <img src="{{user.picture}}" alt="">
-    <li>Usuario: {{ user.name }}</li>
-    <li>Correo: {{ user.email }}</li>
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="{{user.picture}}" class="card-img" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{user.name}}</h5>
+                    <p class="card-text">{{user.email}}</p>
 
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

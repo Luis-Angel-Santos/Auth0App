@@ -14,7 +14,6 @@
                 </li>
             </ul>
             <span class="navbar-text">
-                
                 <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
                     <button class="btn btn-outline-danger" (click)="auth.logout({ returnTo: document.location.origin })">
                       Log out
@@ -24,6 +23,7 @@
                   <ng-template #loggedOut>
                     <button class="btn btn-outline-success" (click)="auth.loginWithRedirect()">Log in</button>
                 </ng-template>
+                
         </span>
         </div>
     </div>
